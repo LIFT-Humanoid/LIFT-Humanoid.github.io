@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Towards Bridging the Gap between Large-Scale Pretraining and Efficient Finetuning for Humanoid Control">
+  <meta name="keywords" content="Reinforcement learning, World model, Humanoid">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Towards Bridging the Gap between Large-Scale Pretraining and Efficient Finetuning for Humanoid Control</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+    .publication-title{font-size:2.6em}
+    .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .video-grid figure{margin:0;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.06);border:1px solid #eee}
+    .video-grid video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+    .video-grid figcaption{padding:10px 12px;font-size:.95rem;line-height:1.35;color:#333;text-align:center}
+    @media (max-width:1024px){.video-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.video-grid{grid-template-columns:1fr}}
+    .single-figure{max-width:900px;margin:0 auto;text-align:center}
+    .single-figure img{width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06);border:1px solid #eee}
+    .single-figure .caption{margin-top:8px;font-size:.95rem;color:#555}
+  </style>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-0 publication-title">Towards Bridging the Gap between Large-Scale Pretraining and Efficient Finetuning for Humanoid Controls</h1>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Key Illustration</h2>
+        <div class="single-figure">
+          <img src="assets/figure/T1_scene.pdf" alt="Key illustration">
+          <div class="caption">Walk in different scenes.</div>
+        </div>
+      </div>
+
+      <div class="hero-body">
+        <h2 class="subtitle has-text-justified">
+          <b>TL;DR</b>&nbsp; We propose LIFT-Humanoid.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Reinforcement learning (RL) is widely used for humanoid control, with on-policy methods such as Proximal Policy Optimization (PPO) enabling robust training via large-scale parallel simulation and, in some cases, zero-shot deployment to real robots. However, the low sample efficiency of on-policy algorithms limits safe adaptation to new environments. Although off-policy RL and model-based RL have shown improved sample efficiency, the gap between large-scale pretraining and efficient finetuning on humanoids still exists. In this paper, we find that off-policy Soft Actor-Critic (SAC), with large-batch update and a high Update-To-Data (UTD) ratio, reliably supports large-scale pretraining of humanoid locomotion policies, achieving zero-shot deployment on real robots. For adaptation, we demonstrate in simulation that these SAC-pretrained policies can be finetuned in new environments and out-of-distribution tasks using model-based methods. Data collection in the new environment executes a deterministic policy while stochastic exploration is instead confined to a physics-informed world model. This separation mitigates the risks of random exploration during adaptation while preserving exploratory coverage for improvement. Overall, the approach couples the wall-clock efficiency of large-scale simulation during pretraining with the sample efficiency of model-based learning during fine-tuning.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Demo Gallery (9 Videos)</h2>
+      <p class="subtitle">Autoplay, muted, loop; each sample contains a short caption.</p>
+
+      <div class="video-grid">
+        <figure>
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/videos/T1_walk_forwards_backwards.mp4" type="video/mp4">
+          </video>
+          <figcaption>Scene 1: Walk forwards and backwards indoor</figcaption>
+        </figure>
+
+        <figure>
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/videos/T1_lateral_movement.mp4" type="video/mp4">
+          </video>
+          <figcaption>Scene 2: Lateral movement</figcaption>
+        </figure>
+
+        <figure>
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/videos/T1_walk_on_concrete_blocks.mp4" type="video/mp4">
+          </video>
+          <figcaption>Scene 3: Walk on concrete blocks</figcaption>
+        </figure>
+
+        <figure>
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/videos/T1_walk_on_grass.mp4" type="video/mp4">
+          </video>
+          <figcaption>Scene 4: Walk on grass</figcaption>
+        </figure>
+
+        <figure>
+          <video autoplay muted loop playsinline preload="metadata" >
+            <source src="assets/videos/T1_walk_on_muddy_ground.mp4" type="video/mp4">
+          </video>
+          <figcaption>Scene 5: Walk on muddy ground</figcaption>
+        </figure>
+
+        <figure>
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/videos/T1_walk_over_stage.mp4" type="video/mp4">
+          </video>
+          <figcaption>Scene 6: Walk over stage</figcaption>
+        </figure>
+
+        <figure>
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/videos/T1_spin.mp4" type="video/mp4">
+          </video>
+          <figcaption>Scene 7: Spin</figcaption>
+        </figure>
+
+        <figure>
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/videos/T1_walking_uphill.mp4" type="video/mp4">
+          </video>
+          <figcaption>Scene 8: Walk uphill</figcaption>
+        </figure>
+
+        <figure>
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/videos/T1_walking_downhill.mp4" type="video/mp4">
+          </video>
+          <figcaption>Scene 9: Walking downhill</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+
+</body>
+</html>

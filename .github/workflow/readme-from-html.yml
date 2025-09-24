@@ -1,0 +1,34 @@
+name: Generate README from index.html
+on:
+  push:
+    branches: [ weidongRL ]    # 你的默认分支
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  gen-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 安装 pandoc（把 HTML 转成 GitHub 风格 Markdown）
+      - name: Install pandoc
+        run: sudo apt-get update && sudo apt-get install -y pandoc
+
+      # 转换 index.html → README.md（gfm = GitHub Flavored Markdown）
+      - name: Convert HTML to README.md
+        run: |
+          echo "<!-- Auto-generated from index.html; do not edit directly. -->" > README.md
+          echo "" >> README.md
+          pandoc -f html -t gfm index.html >> README.md
+          # 可选：在顶部附上站点链接
+          sed -i '1i # 项目主页  \n\n在线访问：<https://LIFT-Humanoid.github.io/> \n' README.md
+
+      # 只有有变更才提交
+      - name: Commit if changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: auto-generate README from index.html"
+          file_pattern: README.md
