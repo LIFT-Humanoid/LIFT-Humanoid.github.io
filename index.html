@@ -63,6 +63,10 @@
       .html-label{margin-bottom:6px}
       .html-figure iframe{height:260px}
     }
+
+    .labeled-html-1x6{display:grid;grid-template-columns:120px 1fr;row-gap:18px;column-gap:14px}
+    @media (max-width:1024px){.labeled-html-1x6{grid-template-columns:100px 1fr}}
+    @media (max-width:640px){.labeled-html-1x6{grid-template-columns:1fr}}
   </style>
 </head>
 
@@ -263,12 +267,14 @@
   <section class="section">
     <div class="container is-max-desktop">
       <h2 class="title is-3 center-title">Finetuning Results: Brax Demo</h2>
-      <div class="labeled-html-grid">
+      <div class="labeled-html-1x6">
         <div class="html-label">T1 velocity 1.0m/s</div>
         <figure class="html-figure">
           <iframe src="./assets/html/1.0vel_wq04rsr7_0.html" loading="lazy"></iframe>
           <figcaption class="html-caption">Before finetuning</figcaption>
         </figure>
+
+        <div class="html-label"></div>
         <figure class="html-figure">
           <iframe src="./assets/html/1.0vel_wq04rsr7_58000.html" loading="lazy"></iframe>
           <figcaption class="html-caption">After finetuning</figcaption>
@@ -279,6 +285,8 @@
           <iframe src="./assets/html/1.2vel_kq8j9o8y_0.html" loading="lazy"></iframe>
           <figcaption class="html-caption">Before finetuning</figcaption>
         </figure>
+
+        <div class="html-label"></div>
         <figure class="html-figure">
           <iframe src="./assets/html/1.2vel_kq8j9o8y_88000.html" loading="lazy"></iframe>
           <figcaption class="html-caption">After finetuning</figcaption>
@@ -289,18 +297,10 @@
           <iframe src="./assets/html/best_1.5vel_dygenzop_0.html" loading="lazy"></iframe>
           <figcaption class="html-caption">Before finetuning</figcaption>
         </figure>
+
+        <div class="html-label"></div>
         <figure class="html-figure">
           <iframe src="./assets/html/best_1.5vel_dygenzop_64000.html" loading="lazy"></iframe>
-          <figcaption class="html-caption">After finetuning</figcaption>
-        </figure>
-
-        <div class="html-label">G1 velocity 1.5m/s</div>
-        <figure class="html-figure">
-          <iframe src="./assets/html/g1_1.5vel_0.html" loading="lazy"></iframe>
-          <figcaption class="html-caption">Before finetuning</figcaption>
-        </figure>
-        <figure class="html-figure">
-          <iframe src="./assets/html/best_g1_1.5vel_76000.html" loading="lazy"></iframe>
           <figcaption class="html-caption">After finetuning</figcaption>
         </figure>
       </div>
