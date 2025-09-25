@@ -43,6 +43,14 @@
 
     section>.container.is-max-desktop:not(.no-divider){border-bottom:1px solid #e0e0e0;margin-bottom:40px;padding-bottom:40px}
     section:last-of-type>.container.is-max-desktop{border-bottom:none;margin-bottom:0;padding-bottom:0}
+
+    .labeled-video-grid{display:grid;grid-template-columns:120px 1fr 1fr;column-gap:14px;row-gap:18px}
+    .speed-label{display:flex;align-items:center;justify-content:flex-start;font-size:.95rem;color:#555}
+    @media (max-width:1024px){.labeled-video-grid{grid-template-columns:100px 1fr 1fr}}
+    @media (max-width:640px){
+      .labeled-video-grid{grid-template-columns:1fr}
+      .speed-label{margin-bottom:6px}
+    }
   </style>
 </head>
 
@@ -102,7 +110,7 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <h2 class="title is-3 center-title">Pretraining Results: MuJoCo Playground</h2>
-      <div class="single-figure">
+    <div class="single-figure">
         <img src="./assets/figure/pretrain_exp.png" alt="Framework">
         <div class="caption">Figure 2: LIFT achieves comparable or higher evaluation returns than PPO and FastTD3 while stabilizes at its peak return faster on rough terrain environments. On flat terrain, it achieves comparable peak performance with similar wall-clock runtime.</div>
       </div>
@@ -121,7 +129,7 @@
 
   <section class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3">Sim-to-real Transfer with LIFT Pretrained Policy</h2>
+      <h2 class="title is-3 center-title">Sim-to-real Transfer with LIFT Pretrained Policy</h2>
       <div class="video-grid">
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
@@ -192,49 +200,49 @@
 
   <section class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3">Pretraining Results: MuJoCo Playground</h2>
+      <h2 class="title is-3 center-title">Pretraining Results: MuJoCo Playground</h2>
       <div class="video-grid">
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/pretrain_01_h264.mp4" type="video/mp4">
             <source src="./assets/videos/pretrain_01_vp9.webm" type="video/webm">
           </video>
-          <figcaption>Pretrain 1</figcaption>
+          <figcaption>T1LowDimJoystickFlatTerrain</figcaption>
         </figure>
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/pretrain_02_h264.mp4" type="video/mp4">
             <source src="./assets/videos/pretrain_02_vp9.webm" type="video/webm">
           </video>
-          <figcaption>Pretrain 2</figcaption>
+          <figcaption>T1LowDimJoystickRoughTerrain</figcaption>
         </figure>
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/pretrain_03_h264.mp4" type="video/mp4">
             <source src="./assets/videos/pretrain_03_vp9.webm" type="video/webm">
           </video>
-          <figcaption>Pretrain 3</figcaption>
+          <figcaption>T1JoystickFlatTerrain</figcaption>
         </figure>
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/pretrain_04_h264.mp4" type="video/mp4">
             <source src="./assets/videos/pretrain_04_vp9.webm" type="video/webm">
           </video>
-          <figcaption>Pretrain 4</figcaption>
+          <figcaption>T1JoystickRoughTerrain</figcaption>
         </figure>
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/pretrain_05_h264.mp4" type="video/mp4">
             <source src="./assets/videos/pretrain_05_vp9.webm" type="video/webm">
           </video>
-          <figcaption>Pretrain 5</figcaption>
+          <figcaption>G1JoystickFlatTerrain</figcaption>
         </figure>
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/pretrain_06_h264.mp4" type="video/mp4">
             <source src="./assets/videos/pretrain_06_vp9.webm" type="video/webm">
           </video>
-          <figcaption>Pretrain 6</figcaption>
+          <figcaption>G1JoystickRoughTerrain</figcaption>
         </figure>
       </div>
     </div>
@@ -242,8 +250,9 @@
 
   <section class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3">Finetuning Results: Brax</h2>
-      <div class="video-grid">
+      <h2 class="title is-3 center-title">Finetuning Results: Brax</h2>
+      <div class="labeled-video-grid">
+        <div class="speed-label">1.0m/s</div>
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/finetune_01_h264.mp4" type="video/mp4">
@@ -258,12 +267,37 @@
           </video>
           <figcaption>Finetune 2</figcaption>
         </figure>
+
+        <div class="speed-label">1.2m/s</div>
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/finetune_03_h264.mp4" type="video/mp4">
             <source src="./assets/videos/finetune_03_vp9.webm" type="video/webm">
           </video>
           <figcaption>Finetune 3</figcaption>
+        </figure>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/finetune_04_h264.mp4" type="video/mp4">
+            <source src="./assets/videos/finetune_04_vp9.webm" type="video/webm">
+          </video>
+          <figcaption>Finetune 4</figcaption>
+        </figure>
+
+        <div class="speed-label">1.5m/s</div>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/finetune_05_h264.mp4" type="video/mp4">
+            <source src="./assets/videos/finetune_05_vp9.webm" type="video/webm">
+          </video>
+          <figcaption>Finetune 5</figcaption>
+        </figure>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/finetune_06_h264.mp4" type="video/mp4">
+            <source src="./assets/videos/finetune_06_vp9.webm" type="video/webm">
+          </video>
+          <figcaption>Finetune 6</figcaption>
         </figure>
       </div>
     </div>
