@@ -51,6 +51,18 @@
       .labeled-video-grid{grid-template-columns:1fr}
       .speed-label{margin-bottom:6px}
     }
+
+    .labeled-html-grid{display:grid;grid-template-columns:120px 1fr 1fr;column-gap:14px;row-gap:18px}
+    .html-label{display:flex;align-items:center;justify-content:flex-start;font-size:.95rem;color:#555}
+    .html-figure{margin:0;display:flex;flex-direction:column}
+    .html-figure iframe{width:100%;height:300px;border:0}
+    .html-caption{margin-top:6px;font-size:.9rem;line-height:1.35;color:#555;text-align:left}
+    @media (max-width:1024px){.labeled-html-grid{grid-template-columns:100px 1fr 1fr}}
+    @media (max-width:640px){
+      .labeled-html-grid{grid-template-columns:1fr}
+      .html-label{margin-bottom:6px}
+      .html-figure iframe{height:260px}
+    }
   </style>
 </head>
 
@@ -110,7 +122,7 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <h2 class="title is-3 center-title">Pretraining Results: MuJoCo Playground</h2>
-    <div class="single-figure">
+      <div class="single-figure">
         <img src="./assets/figure/pretrain_exp.png" alt="Framework">
         <div class="caption">Figure 2: LIFT achieves comparable or higher evaluation returns than PPO and FastTD3 while stabilizes at its peak return faster on rough terrain environments. On flat terrain, it achieves comparable peak performance with similar wall-clock runtime.</div>
       </div>
@@ -250,65 +262,50 @@
 
   <section class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 center-title">Finetuning Results: Brax</h2>
-      <div class="labeled-video-grid">
-        <div class="speed-label">1.0m/s</div>
-        <figure>
-          <video autoplay controls muted loop playsinline preload="metadata">
-            <source src="./assets/videos/finetune_01_h264.mp4" type="video/mp4">
-            <source src="./assets/videos/finetune_01_vp9.webm" type="video/webm">
-          </video>
-          <figcaption>Finetune 1</figcaption>
+      <h2 class="title is-3 center-title">Finetuning Results: Brax Demo</h2>
+      <div class="labeled-html-grid">
+        <div class="html-label">T1 velocity 1.0m/s</div>
+        <figure class="html-figure">
+          <iframe src="./assets/html/1.0vel_wq04rsr7_0.html" loading="lazy"></iframe>
+          <figcaption class="html-caption">Before finetuning</figcaption>
         </figure>
-        <figure>
-          <video autoplay controls muted loop playsinline preload="metadata">
-            <source src="./assets/videos/finetune_02_h264.mp4" type="video/mp4">
-            <source src="./assets/videos/finetune_02_vp9.webm" type="video/webm">
-          </video>
-          <figcaption>Finetune 2</figcaption>
+        <figure class="html-figure">
+          <iframe src="./assets/html/1.0vel_wq04rsr7_58000.html" loading="lazy"></iframe>
+          <figcaption class="html-caption">After finetuning</figcaption>
         </figure>
 
-        <div class="speed-label">1.2m/s</div>
-        <figure>
-          <video autoplay controls muted loop playsinline preload="metadata">
-            <source src="./assets/videos/finetune_03_h264.mp4" type="video/mp4">
-            <source src="./assets/videos/finetune_03_vp9.webm" type="video/webm">
-          </video>
-          <figcaption>Finetune 3</figcaption>
+        <div class="html-label">T1 velocity 1.2m/s</div>
+        <figure class="html-figure">
+          <iframe src="./assets/html/1.2vel_kq8j9o8y_0.html" loading="lazy"></iframe>
+          <figcaption class="html-caption">Before finetuning</figcaption>
         </figure>
-        <figure>
-          <video autoplay controls muted loop playsinline preload="metadata">
-            <source src="./assets/videos/finetune_04_h264.mp4" type="video/mp4">
-            <source src="./assets/videos/finetune_04_vp9.webm" type="video/webm">
-          </video>
-          <figcaption>Finetune 4</figcaption>
+        <figure class="html-figure">
+          <iframe src="./assets/html/1.2vel_kq8j9o8y_88000.html" loading="lazy"></iframe>
+          <figcaption class="html-caption">After finetuning</figcaption>
         </figure>
 
-        <div class="speed-label">1.5m/s</div>
-        <figure>
-          <video autoplay controls muted loop playsinline preload="metadata">
-            <source src="./assets/videos/finetune_05_h264.mp4" type="video/mp4">
-            <source src="./assets/videos/finetune_05_vp9.webm" type="video/webm">
-          </video>
-          <figcaption>Finetune 5</figcaption>
+        <div class="html-label">T1 velocity 1.5m/s</div>
+        <figure class="html-figure">
+          <iframe src="./assets/html/best_1.5vel_dygenzop_0.html" loading="lazy"></iframe>
+          <figcaption class="html-caption">Before finetuning</figcaption>
         </figure>
-        <figure>
-          <video autoplay controls muted loop playsinline preload="metadata">
-            <source src="./assets/videos/finetune_06_h264.mp4" type="video/mp4">
-            <source src="./assets/videos/finetune_06_vp9.webm" type="video/webm">
-          </video>
-          <figcaption>Finetune 6</figcaption>
+        <figure class="html-figure">
+          <iframe src="./assets/html/best_1.5vel_dygenzop_64000.html" loading="lazy"></iframe>
+          <figcaption class="html-caption">After finetuning</figcaption>
+        </figure>
+
+        <div class="html-label">G1 velocity 1.5m/s</div>
+        <figure class="html-figure">
+          <iframe src="./assets/html/g1_1.5vel_0.html" loading="lazy"></iframe>
+          <figcaption class="html-caption">Before finetuning</figcaption>
+        </figure>
+        <figure class="html-figure">
+          <iframe src="./assets/html/best_g1_1.5vel_76000.html" loading="lazy"></iframe>
+          <figcaption class="html-caption">After finetuning</figcaption>
         </figure>
       </div>
     </div>
   </section>
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 center-title">Offline HTML Demo</h2>
-      <iframe src="./assets/html/best_1.5vel_dygenzop_0.html" width="100%" height="600" loading="lazy" style="border:0;"></iframe>
-    </div>
-  </section>
-  
+ 
 </body>
 </html>
