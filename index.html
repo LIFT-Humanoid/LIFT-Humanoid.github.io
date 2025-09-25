@@ -29,15 +29,14 @@
       grid-template-columns:repeat(3,1fr);
       gap:14px;
     }
-
     .video-grid figure{
-      margin:0;               
-      padding:0;              
-      background:none;        
-      border:0;               
-      border-radius:0;        
-      box-shadow:none;        
-      overflow:visible;       
+      margin:0;
+      padding:0;
+      background:none;
+      border:0;
+      border-radius:0;
+      box-shadow:none;
+      overflow:visible;
     }
     .video-grid video{
       display:block;
@@ -47,23 +46,28 @@
       object-fit:cover;
     }
     .video-grid figcaption{
-      margin-top:6px;         
-      padding:0;              
-      font-size:.95rem;       
+      margin-top:6px;
+      padding:0;
+      font-size:.95rem;
       line-height:1.35;
-      color:#333;             
-      text-align:center;      
-      background:none;        
+      color:#333;
+      text-align:center;
+      background:none;
     }
     @media (max-width:1024px){.video-grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:640px){.video-grid{grid-template-columns:1fr}}
 
-    .single-figure{max-width:900px;margin:0 auto;text-align:center}
-    .single-figure img{width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06);border:1px solid #eee}
-    .single-figure .caption{margin-top:8px;font-size:.95rem;color:#555}
+    .single-figure{max-width:900px;margin:0 auto}
+    .single-figure img{width:100%;height:auto;display:block;border-radius:0;box-shadow:none;border:0;background:none}
+    .single-figure .caption{margin-top:8px;font-size:.95rem;color:#555;text-align:left}
+
     .link-block{display:inline-block;margin-top:10px}
+
     .top-banner{width:100%}
-    .top-banner img{display:block;width:100%;height:auto}
+    .top-banner{display:flex;justify-content:center;transform:scale(0.3);transform-origin:top center}
+
+    section{border-bottom:1px solid #e0e0e0;margin-bottom:40px;padding-bottom:40px}
+    section:last-of-type{border-bottom:none}
   </style>
 </head>
 
@@ -71,6 +75,7 @@
   <section class="top-banner">
     <img src="./assets/figure/top_banner.jpg" alt="Banner">
   </section>
+
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
@@ -99,7 +104,7 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Reinforcement learning (RL) is widely used for humanoid control, with on-policy methods such as Proximal Policy Optimization (PPO) enabling robust training via large-scale parallel simulation and, in some cases, zero-shot deployment to real robots. However, the low sample efficiency of on-policy algorithms limits safe adaptation to new environments. Although off-policy RL and model-based RL have shown improved sample efficiency, the gap between large-scale pretraining and efficient finetuning on humanoids still exists. In this paper, we find that off-policy Soft Actor-Critic (SAC), with large-batch update and a high Update-To-Data (UTD) ratio, reliably supports large-scale pretraining of humanoid locomotion policies, achieving zero-shot deployment on real robots. For adaptation, we demonstrate in simulation that these SAC-pretrained policies can be finetuned in new environments and out-of-distribution tasks using model-based methods. Data collection in the new environment executes a deterministic policy while stochastic exploration is instead confined to a physics-informed world model. This separation mitigates the risks of random exploration during adaptation while preserving exploratory coverage for improvement. Overall, the approach couples the wall-clock efficiency of large-scale simulation during pretraining with the sample efficiency of model-based learning during fine-tuning.
+              Reinforcement learning (RL) is widely used for humanoid control, with on-policy methods such as Proximal Policy Optimization (PPO) enabling robust training via large-scale parallel simulation and, in some cases, zero-shot deployment to real robots. However, the low sample efficiency of on-policy algorithms limits safe adaptation to new environments. Although off-policy RL and model-based RL have shown improved sample efficiency, the gap between large-scale pretraining and efficient finetuning on humanoids still exists. In this paper, we find that off-policy Soft Actor-Critic (SAC), with large-batch update and a high Update-To-Data (UTD) ratio, reliably supports large-scale pretraining of humanoid locomotion policies, achieving zero-shot deployment to real robots. For adaptation, we demonstrate in simulation that these SAC-pretrained policies can be finetuned in new environments and out-of-distribution tasks using model-based methods. Data collection in the new environment executes a deterministic policy while stochastic exploration is instead confined to a physics-informed world model. This separation mitigates the risks of random exploration during adaptation while preserving exploratory coverage for improvement. Overall, the approach couples the wall-clock efficiency of large-scale simulation during pretraining with the sample efficiency of model-based learning during fine-tuning.
             </p>
           </div>
         </div>
@@ -112,25 +117,17 @@
       <h2 class="title is-3">Framework</h2>
       <div class="single-figure">
         <img src="./assets/figure/framework.png" alt="Framework">
-        <div class="caption">Figure 1: Large-scale pretralning and efficient FineTuning (LIFT) Framework. In stage (i), we
-          implement SAC in JAX to support large-batch update and high UTD, achieving fast, robust con-
-          vergence in massively parallel simulation and zero-shot deployment to a real humanoid in outdoor
-          experiments. In stage (ii), we pretrain a physics-informed world model on the SAC data, combin-
-          ing Lagrangian dynamics with a residual predictor to capture contact forces and other unmodeled
-          effects. In stage (iii), we finetune both the policy and the world model to new environments while
-          executing only deterministic actions in the environment. Stochastic exploration is confined to roll-
-          outs within the world model. This framework enhances both the safety and efficiency of finetuning.</div>
+        <div class="caption">Figure 1: Large-scale pretralning and efficient FineTuning (LIFT) Framework. In stage (i), we implement SAC in JAX to support large-batch update and high UTD, achieving fast, robust convergence in massively parallel simulation and zero-shot deployment to a real humanoid in outdoor experiments. In stage (ii), we pretrain a physics-informed world model on the SAC data, combining Lagrangian dynamics with a residual predictor to capture contact forces and other unmodeled effects. In stage (iii), we finetune both the policy and the world model to new environments while executing only deterministic actions in the environment. Stochastic exploration is confined to rollouts within the world model. This framework enhances both the safety and efficiency of finetuning.</div>
       </div>
     </div>
   </section>
 
   <section class="hero teaser">
     <div class="container is-max-desktop">
+      <h2 class="title is-3">Result</h2>
       <div class="single-figure">
         <img src="./assets/figure/pretrain_exp.png" alt="Framework">
-        <div class="caption">Figure 2: LIFT achieves comparable or higher evaluation returns
-          than PPO and FastTD3 while stabilizes at its peak return faster on rough terrain environments. On
-          flat terrain, it achieves comparable peak performance with similar wall-clock runtime.</div>
+        <div class="caption">Figure 2: LIFT achieves comparable or higher evaluation returns than PPO and FastTD3 while stabilizes at its peak return faster on rough terrain environments. On flat terrain, it achieves comparable peak performance with similar wall-clock runtime.</div>
       </div>
     </div>
   </section>
@@ -147,7 +144,6 @@
   <section class="section">
     <div class="container is-max-desktop">
       <h2 class="title is-3">Sim-to-real Transfer with LIFT Pretrained Policy</h2>
-
       <div class="video-grid">
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
@@ -156,7 +152,6 @@
           </video>
           <figcaption>Scene 1: Walk forwards and backwards indoor</figcaption>
         </figure>
-
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/T1_lateral_movement_h264.mp4" type="video/mp4">
@@ -164,7 +159,6 @@
           </video>
           <figcaption>Scene 2: Lateral movement</figcaption>
         </figure>
-
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/T1_walk_on_concrete_blocks_h264.mp4" type="video/mp4">
@@ -172,7 +166,6 @@
           </video>
           <figcaption>Scene 3: Walk on concrete blocks</figcaption>
         </figure>
-
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/T1_walk_on_grass_h264.mp4" type="video/mp4">
@@ -180,7 +173,6 @@
           </video>
           <figcaption>Scene 4: Walk on grass</figcaption>
         </figure>
-
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/T1_walk_on_muddy_ground_h264.mp4" type="video/mp4">
@@ -188,7 +180,6 @@
           </video>
           <figcaption>Scene 5: Walk on muddy ground</figcaption>
         </figure>
-
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/T1_walk_over_stage_h264.mp4" type="video/mp4">
@@ -196,7 +187,6 @@
           </video>
           <figcaption>Scene 6: Walk over stage</figcaption>
         </figure>
-
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/T1_spin_h264.mp4" type="video/mp4">
@@ -204,7 +194,6 @@
           </video>
           <figcaption>Scene 7: Spin</figcaption>
         </figure>
-
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/T1_walking_uphill_h264.mp4" type="video/mp4">
@@ -212,7 +201,6 @@
           </video>
           <figcaption>Scene 8: Walk uphill</figcaption>
         </figure>
-
         <figure>
           <video autoplay controls muted loop playsinline preload="metadata">
             <source src="./assets/videos/T1_walking_downhill_h264.mp4" type="video/mp4">
