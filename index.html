@@ -41,14 +41,14 @@
 
     .center-title{text-align:center}
 
-    section>.container.is-max-desktop{border-bottom:1px solid #e0e0e0;margin-bottom:40px;padding-bottom:40px}
+    section>.container.is-max-desktop:not(.no-divider){border-bottom:1px solid #e0e0e0;margin-bottom:40px;padding-bottom:40px}
     section:last-of-type>.container.is-max-desktop{border-bottom:none;margin-bottom:0;padding-bottom:0}
   </style>
 </head>
 
 <body>
   <section class="top-banner">
-    <div class="container is-max-desktop">
+    <div class="container is-max-desktop no-divider">
       <img src="./assets/figure/top_banner.jpg" alt="Banner">
     </div>
   </section>
@@ -101,7 +101,7 @@
 
   <section class="hero teaser">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 center-title">Result</h2>
+      <h2 class="title is-3 center-title">Pretraining Results: MuJoCo Playground</h2>
       <div class="single-figure">
         <img src="./assets/figure/pretrain_exp.png" alt="Framework">
         <div class="caption">Figure 2: LIFT achieves comparable or higher evaluation returns than PPO and FastTD3 while stabilizes at its peak return faster on rough terrain environments. On flat terrain, it achieves comparable peak performance with similar wall-clock runtime.</div>
@@ -111,6 +111,7 @@
 
   <section class="hero teaser">
     <div class="container is-max-desktop">
+      <h2 class="title is-3 center-title">Finetuning Result: Brax</h2>
       <div class="single-figure">
         <img src="./assets/figure/finetune_exp.png" alt="Framework">
         <div class="caption">Figure 3: LIFT consistently converges across all tasks, achieving stable walking that closely tracks the desired forward speed during the Booster T1 finetuning experiments. After finetuning, the policy demonstrates significantly reduced body oscillations and less deviation from the desired speed direction, with noticeable improvements in velocity.</div>
@@ -184,6 +185,85 @@
             <source src="./assets/videos/T1_walking_downhill_vp9.webm" type="video/webm">
           </video>
           <figcaption>Scene 9: Walking downhill</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Pretraining Results: MuJoCo Playground</h2>
+      <div class="video-grid">
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/pretrain_01_h264.mp4" type="video/mp4">
+            <source src="./assets/videos/pretrain_01_vp9.webm" type="video/webm">
+          </video>
+          <figcaption>Pretrain 1</figcaption>
+        </figure>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/pretrain_02_h264.mp4" type="video/mp4">
+            <source src="./assets/videos/pretrain_02_vp9.webm" type="video/webm">
+          </video>
+          <figcaption>Pretrain 2</figcaption>
+        </figure>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/pretrain_03_h264.mp4" type="video/mp4">
+            <source src="./assets/videos/pretrain_03_vp9.webm" type="video/webm">
+          </video>
+          <figcaption>Pretrain 3</figcaption>
+        </figure>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/pretrain_04_h264.mp4" type="video/mp4">
+            <source src="./assets/videos/pretrain_04_vp9.webm" type="video/webm">
+          </video>
+          <figcaption>Pretrain 4</figcaption>
+        </figure>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/pretrain_05_h264.mp4" type="video/mp4">
+            <source src="./assets/videos/pretrain_05_vp9.webm" type="video/webm">
+          </video>
+          <figcaption>Pretrain 5</figcaption>
+        </figure>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/pretrain_06_h264.mp4" type="video/mp4">
+            <source src="./assets/videos/pretrain_06_vp9.webm" type="video/webm">
+          </video>
+          <figcaption>Pretrain 6</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Finetuning Results: Brax</h2>
+      <div class="video-grid">
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/finetune_01_h264.mp4" type="video/mp4">
+            <source src="./assets/videos/finetune_01_vp9.webm" type="video/webm">
+          </video>
+          <figcaption>Finetune 1</figcaption>
+        </figure>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/finetune_02_h264.mp4" type="video/mp4">
+            <source src="./assets/videos/finetune_02_vp9.webm" type="video/webm">
+          </video>
+          <figcaption>Finetune 2</figcaption>
+        </figure>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/finetune_03_h264.mp4" type="video/mp4">
+            <source src="./assets/videos/finetune_03_vp9.webm" type="video/webm">
+          </video>
+          <figcaption>Finetune 3</figcaption>
         </figure>
       </div>
     </div>
