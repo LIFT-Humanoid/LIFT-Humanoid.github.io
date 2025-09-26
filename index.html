@@ -26,7 +26,7 @@
 
     .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     .video-grid figure{margin:0;padding:0;background:none;border:0;border-radius:0;box-shadow:none;overflow:visible}
-    .video-grid video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+    .video-grid video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}
     .video-grid figcaption{margin-top:6px;padding:0;font-size:.95rem;line-height:1.35;color:#333;text-align:center;background:none}
     @media (max-width:1024px){.video-grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:640px){.video-grid{grid-template-columns:1fr}}
@@ -71,11 +71,6 @@
 </head>
 
 <body>
-  <section class="top-banner">
-    <div class="container is-max-desktop no-divider">
-      <img src="./assets/figure/top_banner.jpg" alt="Banner">
-    </div>
-  </section>
 
   <section class="hero">
     <div class="hero-body">
@@ -118,7 +113,7 @@
       <h2 class="title is-3 center-title">Framework</h2>
       <div class="single-figure">
         <img src="./assets/figure/framework.png" alt="Framework">
-        <div class="caption">Figure 1: Large-scale pretralning and efficient FineTuning (LIFT) Framework. In stage (i), we implement SAC in JAX to support large-batch update and high UTD, achieving fast, robust convergence in massively parallel simulation and zero-shot deployment to a real humanoid in outdoor experiments. In stage (ii), we pretrain a physics-informed world model on the SAC data, combining Lagrangian dynamics with a residual predictor to capture contact forces and other unmodeled effects. In stage (iii), we finetune both the policy and the world model to new environments while executing only deterministic actions in the environment. Stochastic exploration is confined to rollouts within the world model. This framework enhances both the safety and efficiency of finetuning.</div>
+        <div class="caption">Large-scale pretralning and efficient FineTuning (<span style="color: #dc143c;"><b>LIFT</b></span>) Framework. <b>In stage (i)</b>, we implement SAC in JAX to support large-batch update and high UTD, achieving fast, robust convergence in massively parallel simulation and zero-shot deployment to a real humanoid in outdoor experiments. <b>In stage (ii)</b>, we pretrain a physics-informed world model on the SAC data, combining Lagrangian dynamics with a residual predictor to capture contact forces and other unmodeled effects. <b>In stage (iii)</b>, we finetune both the policy and the world model to new environments while executing only deterministic actions in the environment. Stochastic exploration is confined to rollouts within the world model. This framework enhances both the safety and efficiency of finetuning.</div>
       </div>
     </div>
   </section>
@@ -128,7 +123,7 @@
       <h2 class="title is-3 center-title">Pretraining Results: MuJoCo Playground</h2>
       <div class="single-figure">
         <img src="./assets/figure/pretrain_exp.png" alt="Framework">
-        <div class="caption">Figure 2: LIFT achieves comparable or higher evaluation returns than PPO and FastTD3 while stabilizes at its peak return faster on rough terrain environments. On flat terrain, it achieves comparable peak performance with similar wall-clock runtime.</div>
+        <div class="caption"><span style="color: #dc143c;"><b>LIFT</b></span> achieves comparable or higher evaluation returns than PPO and FastTD3 while stabilizes at its peak return faster on rough terrain environments. On flat terrain, it achieves comparable peak performance with similar wall-clock runtime.</div>
       </div>
     </div>
   </section>
@@ -138,7 +133,83 @@
       <h2 class="title is-3 center-title">Finetuning Result: Brax</h2>
       <div class="single-figure">
         <img src="./assets/figure/finetune_exp.png" alt="Framework">
-        <div class="caption">Figure 3: LIFT consistently converges across all tasks, achieving stable walking that closely tracks the desired forward speed during the Booster T1 finetuning experiments. After finetuning, the policy demonstrates significantly reduced body oscillations and less deviation from the desired speed direction, with noticeable improvements in velocity.</div>
+        <div class="caption"><span style="color: #dc143c;"><b>LIFT</b></span> consistently converges across all tasks, achieving stable walking that closely tracks the desired forward speed during the Booster T1 finetuning experiments. After finetuning, the policy demonstrates significantly reduced body oscillations and less deviation from the desired speed direction, with noticeable improvements in velocity.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 center-title">Pretraining Results: MuJoCo Playground</h2>
+
+      <div class="video-grid">
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/t1_mj_lowdim_flat.mp4" type="video/mp4">
+            <source src="./assets/videos/t1_mj_lowdim_flat.webm" type="video/webm">
+          </video>
+          <figcaption>T1LowDimJoystickFlatTerrain</figcaption>
+        </figure>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/t1_mj_flat.mp4" type="video/mp4">
+            <source src="./assets/videos/t1_mj_flat.webm" type="video/webm">
+          </video>
+          <figcaption>T1JoystickFlatTerrain</figcaption>
+        </figure>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/g1_mj_flat.mp4" type="video/mp4">
+            <source src="./assets/videos/g1_mj_flat.webm" type="video/webm">
+          </video>
+          <figcaption>G1JoystickFlatTerrain</figcaption>
+        </figure>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/T1_mj_lowdim_rough.mp4" type="video/mp4">
+            <source src="./assets/videos/T1_mj_lowdim_rough.webm" type="video/webm">
+          </video>
+          <figcaption>T1LowDimJoystickRoughTerrain</figcaption>
+        </figure>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/t1_mj_rough.mp4" type="video/mp4">
+            <source src="./assets/videos/t1_mj_rough.webm" type="video/webm">
+          </video>
+          <figcaption>T1JoystickRoughTerrain</figcaption>
+        </figure>
+        <figure>
+          <video autoplay controls muted loop playsinline preload="metadata">
+            <source src="./assets/videos/g1_mj_rough.mp4" type="video/mp4">
+            <source src="./assets/videos/g1_mj_rough.webm" type="video/webm">
+          </video>
+          <figcaption>G1JoystickRoughTerrain</figcaption>
+        </figure>
+
+      </div>
+      <br>
+      <div class="caption"><span style="color: #dc143c;"><b>LIFT</b></span> consistently converges across all tasks, achieving stable walking that closely tracks the desired forward speed during the Booster T1 finetuning experiments. After finetuning, the policy demonstrates significantly reduced body oscillations and less deviation from the desired speed direction, with noticeable improvements in velocity.</div>
+
+    </div>
+  </section>
+
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 center-title">Finetuning Result: T1 on Brax</h2>
+      <div class="single-figure">
+        <img src="./assets/figure/T1_finetune.png" alt="Framework">
+        <div class="caption">Sim-to-sim transfer and fine-tuning results for the Booster T1 in Brax with a target velocity of 1.5 m/s. <b>Top:</b> Policy before fine-tuning, the policy can not achieve stable walking. <b>Bottom:</b> Policy after fine-tuning, achieving stable locomotion at 1.5m/s .</div>
+      </div>
+    </div>
+  </section>
+
+    <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 center-title">Finetuning Result: G1 on Brax</h2>
+      <div class="single-figure">
+        <img src="./assets/figure/G1_finetune.png" alt="Framework">
+        <div class="caption">Sim-to-sim transfer and fine-tuning results for the Unitree G1 in Brax with a target velocity of 1.5 m/s. <b>Top:</b> Policy before fine-tuning, exhibiting instability and shuffling gait. <b>Bottom:</b> Policy after fine-tuning, demonstrating a stable, human-like walking gait with reduced torso pitch.</div>
       </div>
     </div>
   </section>
@@ -211,99 +282,56 @@
           <figcaption>Scene 9: Walking downhill</figcaption>
         </figure>
       </div>
+      <br>
+        <div class="caption">To demonstrate the potential for zero-shot deployment, we deploy the <span style="color: #dc143c;">LIFT</span> pretrained policy for the Booster~T1 directly on the physical robot. Zero-shot transfer to previously unseen surfaces (e.g., grass, uphill, downhill, mud) is shown in the figure. This provides practical evidence that large-scale, parallel SAC pretraining can yield deployable humanoid controllers. And it also establishes a suitable starting point for subsequent fine-tuning.</div>
     </div>
   </section>
 
   <section class="section">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 center-title">Pretraining Results: MuJoCo Playground</h2>
-      <div class="video-grid">
-        <figure>
-          <video autoplay controls muted loop playsinline preload="metadata">
-            <source src="./assets/videos/pretrain_01_h264.mp4" type="video/mp4">
-            <source src="./assets/videos/pretrain_01_vp9.webm" type="video/webm">
-          </video>
-          <figcaption>T1LowDimJoystickFlatTerrain</figcaption>
-        </figure>
-        <figure>
-          <video autoplay controls muted loop playsinline preload="metadata">
-            <source src="./assets/videos/pretrain_02_h264.mp4" type="video/mp4">
-            <source src="./assets/videos/pretrain_02_vp9.webm" type="video/webm">
-          </video>
-          <figcaption>T1LowDimJoystickRoughTerrain</figcaption>
-        </figure>
-        <figure>
-          <video autoplay controls muted loop playsinline preload="metadata">
-            <source src="./assets/videos/pretrain_03_h264.mp4" type="video/mp4">
-            <source src="./assets/videos/pretrain_03_vp9.webm" type="video/webm">
-          </video>
-          <figcaption>T1JoystickFlatTerrain</figcaption>
-        </figure>
-        <figure>
-          <video autoplay controls muted loop playsinline preload="metadata">
-            <source src="./assets/videos/pretrain_04_h264.mp4" type="video/mp4">
-            <source src="./assets/videos/pretrain_04_vp9.webm" type="video/webm">
-          </video>
-          <figcaption>T1JoystickRoughTerrain</figcaption>
-        </figure>
-        <figure>
-          <video autoplay controls muted loop playsinline preload="metadata">
-            <source src="./assets/videos/pretrain_05_h264.mp4" type="video/mp4">
-            <source src="./assets/videos/pretrain_05_vp9.webm" type="video/webm">
-          </video>
-          <figcaption>G1JoystickFlatTerrain</figcaption>
-        </figure>
-        <figure>
-          <video autoplay controls muted loop playsinline preload="metadata">
-            <source src="./assets/videos/pretrain_06_h264.mp4" type="video/mp4">
-            <source src="./assets/videos/pretrain_06_vp9.webm" type="video/webm">
-          </video>
-          <figcaption>G1JoystickRoughTerrain</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 center-title">Finetuning Results: Brax Demo</h2>
+      <h2 class="title is-3 center-title">Interactive Demo of Brax Finetune</span></h2>
+      <h2 class="title is-3 center-title"><span style="color: #dc143c;">(Drag with your mouse and click the robot to fix the view)</span></h2>
+      <div class="caption"> We transfer the pretrained policy to Brax. During pretraining, target linear velocities along the x-axis were uniformly sampled in [-1,1] m/s. For fine-tuning in Brax, we specify new forward-velocity targets. As shown in the demo, LIFT finetuning improves x-velocity tracking accuracy and reduces lateral (y-axis) drift. At 1.0 m/s, lateral deviation is notably reduced, yielding straighter walking. At 1.2 m/s, initial stepping stability improves and the robot attains higher speed. At 1.5 m/s, the policy is initially unstable, whereas after finetuning it achieves stable locomotion at 1.5 m/s.</div>
+      <br>
       <div class="labeled-html-1x6">
-        <div class="html-label">T1 velocity 1.0m/s</div>
-        <figure class="html-figure">
-          <iframe src="./assets/html/1.0vel_wq04rsr7_0.html" loading="lazy"></iframe>
-          <figcaption class="html-caption">Before finetuning</figcaption>
-        </figure>
 
-        <div class="html-label"></div>
-        <figure class="html-figure">
-          <iframe src="./assets/html/1.0vel_wq04rsr7_58000.html" loading="lazy"></iframe>
-          <figcaption class="html-caption">After finetuning</figcaption>
-        </figure>
-
-        <div class="html-label">T1 velocity 1.2m/s</div>
-        <figure class="html-figure">
-          <iframe src="./assets/html/1.2vel_kq8j9o8y_0.html" loading="lazy"></iframe>
-          <figcaption class="html-caption">Before finetuning</figcaption>
-        </figure>
-
-        <div class="html-label"></div>
-        <figure class="html-figure">
-          <iframe src="./assets/html/1.2vel_kq8j9o8y_88000.html" loading="lazy"></iframe>
-          <figcaption class="html-caption">After finetuning</figcaption>
-        </figure>
-
-        <div class="html-label">T1 velocity 1.5m/s</div>
+        <div class="html-label">1.5m/s (Out-of-Distribution)</div>
         <figure class="html-figure">
           <iframe src="./assets/html/best_1.5vel_dygenzop_0.html" loading="lazy"></iframe>
-          <figcaption class="html-caption">Before finetuning</figcaption>
+          <figcaption style="text-align: center;">Before finetuning</figcaption>
         </figure>
 
-        <div class="html-label"></div>
+        <div class="html-label">1.5m/s (Out-of-Distribution)</div>
         <figure class="html-figure">
           <iframe src="./assets/html/best_1.5vel_dygenzop_64000.html" loading="lazy"></iframe>
-          <figcaption class="html-caption">After finetuning</figcaption>
+          <figcaption style="text-align: center;">After finetuning</figcaption>
+        </figure>
+
+        <div class="html-label">1.2m/s (Out-of-Distribution)</div>
+
+        <figure class="html-figure">
+          <iframe src="./assets/html/1.0vel_wq04rsr7_0.html" loading="lazy"></iframe>
+          <figcaption style="text-align: center;">Before finetuning</figcaption>
+        </figure>
+
+        <div class="html-label">1.2m/s (Out-of-Distribution)</div>
+        <figure class="html-figure">
+          <iframe src="./assets/html/1.0vel_wq04rsr7_58000.html" loading="lazy"></iframe>
+          <figcaption style="text-align: center;">After finetuning</figcaption>
+        </figure>
+        <div class="html-label">1.0m/s (Long Tail)</div>
+        <figure class="html-figure">
+          <iframe src="./assets/html/1.2vel_kq8j9o8y_0.html" loading="lazy"></iframe>
+          <figcaption style="text-align: center;">Before finetuning</figcaption>
+        </figure>
+
+        <div class="html-label">1.0m/s (Long Tail)</div>
+        <figure class="html-figure">
+          <iframe src="./assets/html/1.2vel_kq8j9o8y_88000.html" loading="lazy"></iframe>
+          <figcaption style="text-align: center;">After finetuning</figcaption>
         </figure>
       </div>
+    <br>
     </div>
   </section>
  
