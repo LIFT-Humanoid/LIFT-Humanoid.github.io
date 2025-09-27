@@ -188,7 +188,7 @@
 
       </div>
       <br>
-      <div class="caption"><span style="color: #dc143c;"><b>LIFT</b></span> consistently converges across all tasks, achieving stable walking that closely tracks the desired forward speed during the Booster T1 finetuning experiments. After finetuning, the policy demonstrates significantly reduced body oscillations and less deviation from the desired speed direction, with noticeable improvements in velocity.</div>
+      <div class="caption">As shown in the video, <span style="color: #dc143c;"><b>LIFT</b></span> can solve these real-world humanoid robot tasks within one hour of training on an NVIDIA 4090, for both leg-only and full-body control settings. The T1LowDim environment involves only the 12 leg degrees of freedom; notably, a policy pretrained in <b>T1LowDimJoystickRough</b> can be zero-shot deployed to the real robot (see accompanying video). In contrast, the <b>T1Joystick</b> and <b>G1Joystick</b> tasks include additional degrees of freedom for the arms and waist. The video demonstrates that the learned policies are able to coordinate these joints to maintain balance. Although the reward does not constrain arm motion, efficient locomotion behaviors emerge, such as swinging the arms for balance. Moreover, pretrained policies provide strong initialization for fine-tuning with <span style="color: #dc143c;"><b>LIFT</b></span> in new environments.</div>
 
     </div>
   </section>
