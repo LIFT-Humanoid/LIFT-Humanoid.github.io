@@ -292,81 +292,81 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3 center-title">Interactive Demo of Brax Finetune</h2>
       <h2 class="title is-3 center-title"><span style="color: #dc143c;">(Drag with your mouse and click the robot to fix the view)</span></h2>
-      <div class="caption"> We transfer the pretrained policy to Brax. During pretraining, target linear velocities along the x-axis were uniformly sampled in [-1,1] m/s. For fine-tuning in Brax, we specify new forward-velocity targets. As shown in the demo, LIFT finetuning improves x-velocity tracking accuracy and reduces lateral (y-axis) drift. At 1.0 m/s, lateral deviation is notably reduced, yielding straighter walking. At 1.2 m/s, initial stepping stability improves and the robot attains higher speed. At 1.5 m/s, the policy is initially unstable, whereas after finetuning it achieves stable locomotion at 1.5 m/s.</div>
+      <div class="caption"> We transfer the pretrained policy to Brax. During pretraining, target linear velocities along the x-axis were uniformly sampled in [-1,1] m/s. For fine-tuning in Brax, we specify new forward-velocity targets. As shown in the demo, LIFT finetuning improves x-velocity tracking accuracy and reduces lateral (y-axis) drift.</div>
       <br>
       <div class="labeled-html-1x6">
 
         <div class="html-label">T1 1.5m/s (Out-of-Distribution)</div>
         <figure class="html-figure">
           <iframe src="./assets/html/best_1.5vel_dygenzop_0.html" loading="lazy"></iframe>
-          <figcaption style="text-align: center;">Before finetuning</figcaption>
+          <figcaption style="text-align: center;">Before finetuning, the policy is initially unstable.</figcaption>
         </figure>
 
         <div class="html-label">T1 1.5m/s (Out-of-Distribution)</div>
         <figure class="html-figure">
           <iframe src="./assets/html/best_1.5vel_dygenzop_64000.html" loading="lazy"></iframe>
-          <figcaption style="text-align: center;">After finetuning</figcaption>
+          <figcaption style="text-align: center;">After finetuning: the policy achieves stable locomotion at 1.5 m/s</figcaption>
         </figure>
 
         <div class="html-label">T1 1.2m/s (Out-of-Distribution)</div>
         <figure class="html-figure">
           <iframe src="./assets/html/1.2vel_kq8j9o8y_0.html" loading="lazy"></iframe>
-          <figcaption style="text-align: center;">Before finetuning</figcaption>
+          <figcaption style="text-align: center;">Before finetuning, the policy exhibits some instability during the initial walking phase.</figcaption>
         </figure>
 
         <div class="html-label">T1 1.2m/s (Out-of-Distribution)</div>
         <figure class="html-figure">
           <iframe src="./assets/html/1.2vel_kq8j9o8y_88000.html" loading="lazy"></iframe>
-          <figcaption style="text-align: center;">After finetuning</figcaption>
+          <figcaption style="text-align: center;">After finetuning, initial stepping stability improves and the robot attains higher speed</figcaption>
         </figure>
 
         <div class="html-label">T1 1.0m/s (Long Tail)</div>
 
         <figure class="html-figure">
           <iframe src="./assets/html/1.0vel_wq04rsr7_0.html" loading="lazy"></iframe>
-          <figcaption style="text-align: center;">Before finetuning</figcaption>
+          <figcaption style="text-align: center;">Before finetuning, the policy nearly reaches 0.9 m/s, but it drifts in the y-direction..</figcaption>
         </figure>
 
         <div class="html-label">T1 1.0m/s (Long Tail)</div>
         <figure class="html-figure">
           <iframe src="./assets/html/1.0vel_wq04rsr7_58000.html" loading="lazy"></iframe>
-          <figcaption style="text-align: center;">After finetuning</figcaption>
+          <figcaption style="text-align: center;">After finetuning, lateral deviation is notably reduced and nearly reaches 1.0 m/s, yielding straighter walking.</figcaption>
         </figure>
 
         <div class="html-label">G1 1.5m/s (Out-of-Distribution)</div>
         <figure class="html-figure">
           <iframe src="./assets/html/g1_1.5vel_wwneweql_0.html" loading="lazy"></iframe>
-          <figcaption style="text-align: center;">Before finetuning</figcaption>
+          <figcaption style="text-align: center;">Before finetuning, the policy walks stably at about 1.0 m/s but can't reach higher speeds.</figcaption>
         </figure>
 
         <div class="html-label">G1 1.5m/s (Out-of-Distribution)</div>
         <figure class="html-figure">
           <iframe src="./assets/html/g1_1.5vel_wwneweql_70000step.html" loading="lazy"></iframe>
-          <figcaption style="text-align: center;">After finetuning</figcaption>
+          <figcaption style="text-align: center;">After finetuning, the policy nearly reaches 1.5 m/s.</figcaption>
         </figure>
 
         <div class="html-label">G1 1.2m/s (Out-of-Distribution)</div>
 
         <figure class="html-figure">
           <iframe src="./assets/html/g1_1.2vel_h4uk6xj5_0.html" loading="lazy"></iframe>
-          <figcaption style="text-align: center;">Before finetuning</figcaption>
+          <figcaption style="text-align: center;">Before finetuning, the policy nearly reaches 1.0 m/s.</figcaption>
         </figure>
 
         <div class="html-label">G1 1.2m/s (Out-of-Distribution)</div>
         <figure class="html-figure">
           <iframe src="./assets/html/g1_1.2vel_h4uk6xj5_40000.html" loading="lazy"></iframe>
-          <figcaption style="text-align: center;">After finetuning</figcaption>
+          <figcaption style="text-align: center;">After finetuning, the policy nearly reaches 1.2 m/s.</figcaption>
         </figure>
         <div class="html-label">G1 1.0m/s (Long Tail)</div>
         <figure class="html-figure">
           <iframe src="./assets/html/g1_1.0vel_tw1jqnh4_0.html" loading="lazy"></iframe>
-          <figcaption style="text-align: center;">Before finetuning</figcaption>
+          <figcaption style="text-align: center;">Before finetuning, the policy nearly reaches 0.9 m/s.</figcaption>
         </figure>
 
         <div class="html-label">G1 1.0m/s (Long Tail)</div>
         <figure class="html-figure">
           <iframe src="./assets/html/g1_1.0vel_tw1jqnh4_61000.html" loading="lazy"></iframe>
-          <figcaption style="text-align: center;">After finetuning</figcaption>
+          <figcaption style="text-align: center;">After finetuning, the policy nearly reaches 1.0 m/s.</figcaption>
         </figure>
       </div>
     <br>
