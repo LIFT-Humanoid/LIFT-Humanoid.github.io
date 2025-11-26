@@ -149,9 +149,8 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3 center-title">Finetuning Result: Brax</h2>
       <div class="single-figure">
-        <img src="./assets/figure/t1_finetune_exp.png" alt="Framework">
-        <img src="./assets/figure/g1_finetune_exp(work).png" alt="Framework">
-        <div class="caption"><span style="color: #dc143c;"><b>LIFT</b></span> consistently converges across all tasks, achieving stable walking that closely tracks the desired forward speed during the Booster T1 and the Unitree G1 finetuning experiments. After finetuning, the policy demonstrates significantly reduced body oscillations and less deviation from the desired speed direction, with noticeable improvements in velocity.</div>
+        <img src="./assets/figure/finetune_exp_00.png" alt="Framework">
+        <div class="caption"><span style="color: #dc143c;"><b>LIFT</b></span> consistently converges across all tasks, achieving stable walking that closely tracks the desired forward speed during the Booster T1 finetuning experiments. After finetuning, the policy demonstrates significantly reduced body oscillations and less deviation from the desired speed direction, with noticeable improvements in velocity.</div>
       </div>
     </div>
   </section>
@@ -430,6 +429,11 @@
           <figcaption>walk1_subject1(LAFAN1)</figcaption>
         </figure>
       </div>
+      <div class="content has-text-justified">
+        <p>
+          We reimplemented the observation and reward structure of BeyondMimic in JAX within MuJoCo Playground and used the Unitree motion dataset (LAFAN1) to pretrain a whole-body tracking policy for the Unitree G1 humanoid. We present these whole-body tracking results as preliminary evidence of LIFT’s broader applicability.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -453,6 +457,11 @@
           <i class="fab fa-youtube"></i> YouTube
         </a>
       </p>
+      <div class="content has-text-justified">
+        <p>
+          We conduct real-world fine-tuning experiments on the Booster T1 humanoid robot. We first pretrained a policy in the MuJoCo-Playground T1LowDimJoystickFlatTerrain task, where we removed most energy-related constraint terms and kept only the action-rate L2 penalty. Although this policy transfers well between simulators (MuJoCo -> Brax), the reduced energy constraints and flat-terrain pretraining lead to a failure in zero-shot sim-to-real transfer. We then used this policy as the initialization for real-world fine-tuning to evaluate the effectiveness of our method. As shown in the video, the policy begins with unstable behavior (0 s of data) and gradually improves as additional real-world experience is incorporated. After collecting 80–590 s of data, the robot exhibits increasingly upright posture, smoother gait patterns, and more stable forward velocity. These results demonstrate that our fine-tuning framework can successfully adapt a weak sim-to-real policy and make it substantially more robust after collecting only several minutes of data.
+        </p>
+      </div>
     </div>
   </section>
 </body>
