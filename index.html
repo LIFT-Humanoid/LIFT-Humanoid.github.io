@@ -94,21 +94,58 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-0 publication-title">Towards Bridging the Gap between Large-Scale Pretraining and Efficient Finetuning for Humanoid Controls</h1>
+            <h1 class="title is-0 publication-title">
+              Towards Bridging the Gap between Large-Scale Pretraining and Efficient Finetuning for Humanoid Controls
+            </h1>
+  
+            <!-- Code -->
             <span class="link-block">
-              <a href="https://github.com/LIFT-Humanoid/LIFT" class="external-link button is-normal is-rounded is-dark">
-                <span class="icon">
-                  <i class="fab fa-github"></i>
-                </span>
+              <a href="https://github.com/bigai-ai/LIFT-humanoid"
+                 class="external-link button is-normal is-rounded is-dark"
+                 target="_blank" rel="noopener noreferrer">
+                <span class="icon"><i class="fab fa-github"></i></span>
                 <span>Code</span>
               </a>
             </span>
+  
+            <!-- OpenReview -->
+            <span class="link-block">
+              <a href="https://openreview.net/forum?id=NEOTsyyYH7"
+                 class="external-link button is-normal is-rounded is-dark"
+                 target="_blank" rel="noopener noreferrer">
+                <span class="icon"><i class="fas fa-file-alt"></i></span>
+                <span>OpenReview</span>
+              </a>
+            </span>
+  
+            <!-- arXiv -->
+            <span class="link-block">
+              <a href="https://arxiv.org/abs/2601.21363"
+                 class="external-link button is-normal is-rounded is-dark"
+                 target="_blank" rel="noopener noreferrer">
+                <span class="icon"><i class="ai ai-arxiv"></i></span>
+                <span>arXiv</span>
+              </a>
+            </span>
+  
+            <!-- Video -->
+            <span class="link-block">
+              <a href="https://www.youtube.com/watch?v=0a-9mql4Hbs&feature=youtu.be"
+                 class="external-link button is-normal is-rounded is-dark"
+                 target="_blank" rel="noopener noreferrer">
+                <span class="icon"><i class="fas fa-video"></i></span>
+                <span>Video</span>
+              </a>
+            </span>
+  
             <br>
           </div>
         </div>
       </div>
     </div>
   </section>
+  
+  
   
   <section class="section">
     <div class="container is-max-desktop">
@@ -117,10 +154,39 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Reinforcement learning (RL) is widely used for humanoid control, with on-policy methods such as Proximal Policy Optimization (PPO) enabling robust training via large-scale parallel simulation and, in some cases, zero-shot deployment to real robots. However, the low sample efficiency of on-policy algorithms limits safe adaptation to new environments. Although off-policy RL and model-based RL have shown improved sample efficiency, the gap between large-scale pretraining and efficient finetuning on humanoids still exists. In this paper, we find that off-policy Soft Actor-Critic (SAC), with large-batch update and a high Update-To-Data (UTD) ratio, reliably supports large-scale pretraining of humanoid locomotion policies, achieving zero-shot deployment to real robots. For adaptation, we demonstrate in simulation that these SAC-pretrained policies can be finetuned in new environments and out-of-distribution tasks using model-based methods. Data collection in the new environment executes a deterministic policy while stochastic exploration is instead confined to a physics-informed world model. This separation mitigates the risks of random exploration during adaptation while preserving exploratory coverage for improvement. Overall, the approach couples the wall-clock efficiency of large-scale simulation during pretraining with the sample efficiency of model-based learning during fine-tuning.
+              Reinforcement learning (RL) is widely used for humanoid control, with on-policy methods such as Proximal Policy Optimization (PPO) enabling robust training via large-scale parallel simulation and, in some cases, zero-shot deployment to real robots. However, the low sample efficiency of on-policy algorithms limits safe adaptation to new environments. Although off-policy RL and model-based RL have shown improved sample efficiency, the gap between large-scale pretraining and efficient finetuning on humanoids still exists. In this paper, we find that off-policy Soft Actor-Critic (SAC), with large-batch update and a high Update-To-Data (UTD) ratio, reliably supports large-scale pretraining of humanoid locomotion policies, achieving zero-shot deployment to real robots. For adaptation, we demonstrate that these SAC-pretrained policies can be finetuned in new environments and out-of-distribution tasks using model-based methods. Data collection in the new environment executes a deterministic policy while stochastic exploration is instead confined to a physics-informed world model. This separation mitigates the risks of random exploration during adaptation while preserving exploratory coverage for improvement. Overall, the approach couples the wall-clock efficiency of large-scale simulation during pretraining with the sample efficiency of model-based learning during fine-tuning.
             </p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 center-title">Real-world Finetuning in Booster T1</h2>
+  
+      <div class="youtube-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/0a-9mql4Hbs"
+          title="LIFT Real World Finetuning Experiment"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+  
+      <p style="margin-top:10px; text-align:center; color:#555;">
+        Please watch the video on：
+        <a href="https://youtu.be/0a-9mql4Hbs" target="_blank">
+          <i class="fab fa-youtube"></i> YouTube
+        </a>
+      </p>
+      <div class="content has-text-justified">
+        <p>
+          We conduct real-world fine-tuning experiments on the Booster T1 humanoid robot. We first pretrained a policy in the MuJoCo-Playground T1LowDimJoystickFlatTerrain task, where we removed most energy-related constraint terms and kept only the action-rate L2 penalty. Although this policy transfers well between simulators (MuJoCo -> Brax), the reduced energy constraints and flat-terrain pretraining lead to a failure in zero-shot sim-to-real transfer. We then used this policy as the initialization for real-world fine-tuning to evaluate the effectiveness of our method. As shown in the video, the policy begins with unstable behavior (0 s of data) and gradually improves as additional real-world experience is incorporated. After collecting 80–590 s of data, the robot exhibits increasingly upright posture, smoother gait patterns, and more stable forward velocity. These results demonstrate that our fine-tuning framework can successfully adapt a weak sim-to-real policy and make it substantially more robust after collecting only several minutes of data.
+        </p>
       </div>
     </div>
   </section>
@@ -134,6 +200,7 @@
       </div>
     </div>
   </section>
+
 
   <section class="hero teaser">
     <div class="container is-max-desktop">
@@ -437,32 +504,6 @@
     </div>
   </section>
 
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 center-title">Real-world Finetuning in Booster T1</h2>
-  
-      <div class="youtube-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/0a-9mql4Hbs"
-          title="LIFT Real World Finetuning Experiment"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
-  
-      <p style="margin-top:10px; text-align:center; color:#555;">
-        Please watch the video on：
-        <a href="https://youtu.be/0a-9mql4Hbs" target="_blank">
-          <i class="fab fa-youtube"></i> YouTube
-        </a>
-      </p>
-      <div class="content has-text-justified">
-        <p>
-          We conduct real-world fine-tuning experiments on the Booster T1 humanoid robot. We first pretrained a policy in the MuJoCo-Playground T1LowDimJoystickFlatTerrain task, where we removed most energy-related constraint terms and kept only the action-rate L2 penalty. Although this policy transfers well between simulators (MuJoCo -> Brax), the reduced energy constraints and flat-terrain pretraining lead to a failure in zero-shot sim-to-real transfer. We then used this policy as the initialization for real-world fine-tuning to evaluate the effectiveness of our method. As shown in the video, the policy begins with unstable behavior (0 s of data) and gradually improves as additional real-world experience is incorporated. After collecting 80–590 s of data, the robot exhibits increasingly upright posture, smoother gait patterns, and more stable forward velocity. These results demonstrate that our fine-tuning framework can successfully adapt a weak sim-to-real policy and make it substantially more robust after collecting only several minutes of data.
-        </p>
-      </div>
-    </div>
-  </section>
+
 </body>
 </html>
